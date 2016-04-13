@@ -1,0 +1,3 @@
+rootProject.name = 'bazu_mobile'
+
+include ':app'

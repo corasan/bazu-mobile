@@ -3,30 +3,33 @@
  * https://github.com/facebook/react-native
  */
 
-import React, {
-  AppRegistry,
-  Component,
-  StyleSheet,
-  Text,
-  View
+ import React, {
+     AppRegistry,
+     Component,
+     StyleSheet,
+     Text,
+     View,
+     TouchableHighlight,
+     Navigator
 } from 'react-native';
+import Login from './views/Auth/Login';
+import Contacts from './views/Contacts/Contacts';
 
 class bazu_mobile extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }
+    renderScene(route, navigator) {
+        switch(route.name) {
+            case 'contacts':
+                return (<Contacts/>)
+            case 'login':
+                return (<Login navigator={navigator}/>)
+        }
+    }
+    render() {
+        return (
+            <Navigator initialRoute={{name: 'login', index: 0}}
+            renderScene={this.renderScene} />
+        );
+    }
 }
 
 const styles = StyleSheet.create({

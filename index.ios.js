@@ -10,23 +10,22 @@ import React, {
     Text,
     View,
     TouchableHighlight,Navigator} from 'react-native';
-import Firebase from 'firebase';
-const ref = new Firebase('https://sms-react.firebaseio.com/');
-import Login from './login';
+import Login from './views/Auth/Login';
+import Contacts from './views/Contacts/Contacts';
 
 class bazu_mobile extends Component {
     renderScene(route, navigator) {
         switch(route.name) {
             case 'contacts':
-                return (<Text style={{paddingTop:30}}>Hello from contacts!</Text>)
+                return (<Contacts/>)
             case 'login':
                 return (<Login navigator={navigator}/>)
         }
     }
     render() {
         return (
-                <Navigator initialRoute={{name: 'login', index: 0}}
-                renderScene={this.renderScene} />
+            <Navigator initialRoute={{name: 'login', index: 0}}
+            renderScene={this.renderScene} />
         );
     }
 }

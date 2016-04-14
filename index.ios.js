@@ -9,55 +9,46 @@ import React, {
     StyleSheet,
     Text,
     View,
-    TouchableHighlight} from 'react-native';
+    TouchableHighlight,Navigator} from 'react-native';
 import Firebase from 'firebase';
 const ref = new Firebase('https://sms-react.firebaseio.com/');
+import Login from './login';
 
 class bazu_mobile extends Component {
-    login = () => {
-        console.log('pressed');
-        ref.authWithPassword({
-            email    : "henrypl360@gmail.com",
-            password : "123456"
-        }, function(error, authData) {
-            if (error) {
-                console.log("Login Failed!", error);
-            } else {
-                console.log("Authenticated successfully with payload:", authData);
-            }
-        });
+    renderScene(route, navigator) {
+        switch(route.name) {
+            case 'contacts':
+                return (<Text style={{paddingTop:30}}>Hello from contacts!</Text>)
+            case 'login':
+                return (<Login navigator={navigator}/>)
+        }
     }
     render() {
         return (
-            <View style={styles.container}>
-                <TouchableHighlight style={styles.button} onPress={this.login.bind(this)}><Text>Login!</Text></TouchableHighlight>
-            </View>
+                <Navigator initialRoute={{name: 'login', index: 0}}
+                renderScene={this.renderScene} />
         );
     }
 }
 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  button: {
-      height: 50,
-      width: 100,
-      backgroundColor: 'blue'
-  }
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+    },
+    welcome: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+    },
+    instructions: {
+        textAlign: 'center',
+        color: '#333333',
+        marginBottom: 5,
+    }
 });
 
 AppRegistry.registerComponent('bazu_mobile', () => bazu_mobile);

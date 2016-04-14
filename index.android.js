@@ -3,17 +3,15 @@
  * https://github.com/facebook/react-native
  */
 
- import React, {
-     AppRegistry,
-     Component,
-     StyleSheet,
-     Text,
-     View,
-     TouchableHighlight,
-     Navigator
-} from 'react-native';
-import Login from './views/Auth/Login';
-import Contacts from './views/Contacts/Contacts';
+import React, {
+    AppRegistry,
+    Component,
+    StyleSheet,
+    Text,
+    View,
+    TouchableHighlight,Navigator} from 'react-native';
+import Login from './src/components/Auth/Login';
+import Contacts from './src/components/Contacts/Contacts';
 
 class bazu_mobile extends Component {
     renderScene(route, navigator) {
@@ -32,23 +30,24 @@ class bazu_mobile extends Component {
     }
 }
 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+    },
+    welcome: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+    },
+    instructions: {
+        textAlign: 'center',
+        color: '#333333',
+        marginBottom: 5,
+    }
 });
 
 AppRegistry.registerComponent('bazu_mobile', () => bazu_mobile);

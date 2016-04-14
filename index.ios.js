@@ -10,8 +10,8 @@ import React, {
     Text,
     View,
     TouchableHighlight,Navigator} from 'react-native';
-import Login from './views/Auth/Login';
-import Contacts from './views/Contacts/Contacts';
+import Login from './src/components/Auth/Login';
+import Contacts from './src/components/Contacts/Contacts';
 
 class bazu_mobile extends Component {
     renderScene(route, navigator) {

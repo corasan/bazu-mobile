@@ -30,7 +30,7 @@ export default class Login extends Component {
             <View style={styles.container}>
                 <Text></Text>
                 <TouchableHighlight style={styles.button} onPress={this.login}>
-                    <Text style={styles.btnText}>Login!</Text>
+                    <Text style={styles.btnText}>Login</Text>
                 </TouchableHighlight>
             </View>
         )
@@ -38,6 +38,13 @@ export default class Login extends Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        // justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+        padding:30
+    },
     button: {
         height: 50,
         width: 100,
@@ -46,7 +53,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#555',
         borderRadius: 4,
-        marginTop: 50
     },
     btnText: {
         color: '#fff',

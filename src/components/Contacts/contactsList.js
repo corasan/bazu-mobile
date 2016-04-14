@@ -18,11 +18,11 @@ export default class ContactsList extends Component {
         this.state = {
             dataSource: ds.cloneWithRows(props.contacts)
         }
-        console.log('constructor:', this.props.contacts);
+        console.log('contactsList.js - constructor:', this.props.contacts);
     }
 
     renderRow = (contact) => {
-        console.log('render:', contact.name)
+        console.log('contactsList.js - render:', contact.name)
         return(
             <Text>{contact.name}</Text>
         )
@@ -32,7 +32,6 @@ export default class ContactsList extends Component {
         return(
             <ListView
                 dataSource={this.state.dataSource}
-                key={this.props.contacts}
                 renderRow={this.renderRow}
             />
 

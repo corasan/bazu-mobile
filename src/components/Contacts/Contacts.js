@@ -9,23 +9,41 @@ import React, {
 import Firebase from 'firebase';
 const ref = new Firebase('https://sms-react.firebaseio.com/');
 import ContactsList from './contactsList';
-// import store from '../../store/configStore';
-import store from '../../reducers/contactsReducer'
 
 export default class Contacts extends Component{
     constructor(props) {
+        let user = ref.getAuth();
         super(props);
         this.state = {
-            arr: store.getState()
+            contacts: ref.child(user.uid).once('value').then(function(dataSnap) {
+                return dataSnap.val();
+            }).then(function(data) {
+                let arr = [];
+                for(let i in data) {
+                    arr.push({ name: data[i].name });
+                }
+                return arr;
+            })
         }
-        store.subscribe(() => {
-            this.setState(store.getState());
-        });
     }
+
+    // getData() {
+    //     let user = ref.getAuth();
+    //     ref.child(user.uid).once('value').then(function(dataSnap) {
+    //         return dataSnap.val();
+    //     }).then(function(data) {
+    //         let arr = [];
+    //         for(let i in data) {
+    //             arr.push({ name: data[i].name });
+    //         }
+    //         return arr;
+    //     });
+    // }
+
     render() {
         return (
             <View style={styles.container}>
-                <ContactsList contacts={this.state.arr.items}/>
+                <ContactsList contacts={this.state.contacts}/>
             </View>
         )
     }
@@ -37,3 +55,18 @@ const styles = StyleSheet.create({
         marginLeft: 20
     }
 })
+
+// test = () => {
+//     let user = ref.getAuth();
+//     ref.child(user.uid).on('value').then(function(dataSnap) {
+//         return dataSnap.val();
+//     });
+// }
+//
+// render() {
+//     return (
+//         <View style={styles.container}>
+//             <ContactsList contacts={this.test}/>
+//         </View>
+//     )
+// }

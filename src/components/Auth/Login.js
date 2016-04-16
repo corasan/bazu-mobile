@@ -7,22 +7,16 @@ import React, {
     TouchableHighlight } from 'react-native';
 import Firebase from 'firebase';
 const ref = new Firebase('https://sms-react.firebaseio.com/');
+import store from '../../reducers/authReducer'
+import { authUser } from '../../actions/authActions';
 
 export default class Login extends Component {
     login = () => {
-        ref.authWithPassword({
-            email    : "henrypl360@gmail.com",
-            password : "123456"
-        }, function(error, authData) {
-            if (error) {
-                console.log("Login Failed!", error);
-            } else {
-                console.log("Authenticated successfully with payload:", authData);
-                this.props.navigator.push({
-                    name: 'contacts'
-                });
-            }
-        }.bind(this));
+        store.dispatch(authUser(
+            'henrypl360@gmail.com',
+            '123456',
+            this.props.navigator
+        ));
     }
 
     render() {

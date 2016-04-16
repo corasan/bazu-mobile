@@ -25,7 +25,7 @@ export default class Contacts extends Component{
     render() {
         return (
             <View style={styles.container}>
-                <ContactsList contacts={this.state.arr.items}/>
+                <ContactsList contacts={this.state.arr}/>
             </View>
         )
     }
@@ -33,7 +33,7 @@ export default class Contacts extends Component{
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 30,
-        marginLeft: 20
+        marginTop: 40,
+        alignItems: 'center'
     }
 })

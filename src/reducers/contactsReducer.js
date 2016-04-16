@@ -1,13 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
+import s from '../initialState';
 
-const defaultState = {
-    items: [
-        {name: 'Henry'},
-        {name: 'Paulino'}
-    ]
-};
-
-contactsStore = (state=defaultState, action) => {
+contactsStore = (state, action) => {
     switch(action.type) {
         case 'FETCH_CONTACTS':
             return Object.assign({}, state, {
@@ -15,8 +9,7 @@ contactsStore = (state=defaultState, action) => {
                     name: action.name
                 }])
             });
-        default:
-            return state;
+        default: return state || s.contacts;
     }
 }
 

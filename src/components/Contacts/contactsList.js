@@ -18,13 +18,13 @@ export default class ContactsList extends Component {
         this.state = {
             dataSource: ds.cloneWithRows(props.contacts)
         }
-        console.log('contactsList.js - constructor:', this.props.contacts);
     }
 
     renderRow = (contact) => {
-        console.log('contactsList.js - render:', contact.name)
         return(
-            <Text>{contact.name}</Text>
+            <View style={styles.el}>
+                <Text style={styles.text}>{contact.name}</Text>
+            </View>
         )
     }
 
@@ -38,3 +38,12 @@ export default class ContactsList extends Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    el: {
+        padding: 5,
+    },
+    text: {
+        fontSize: 16
+    }
+});

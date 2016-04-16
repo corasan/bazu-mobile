@@ -24,8 +24,11 @@ class bazu_mobile extends Component {
     }
     render() {
         return (
-            <Navigator initialRoute={{name: 'login', index: 0}}
-            renderScene={this.renderScene} />
+                <Navigator
+                    style={styles.titlebar}
+                    initialRoute={{name: 'login', index: 0}}
+                    renderScene={this.renderScene}
+                />
         );
     }
 }
@@ -42,12 +45,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
     }
+
 });
 
 AppRegistry.registerComponent('bazu_mobile', () => bazu_mobile);

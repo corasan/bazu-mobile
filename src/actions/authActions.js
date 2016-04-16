@@ -1,5 +1,7 @@
 import Firebase from 'firebase';
 const ref = new Firebase('https://sms-react.firebaseio.com/');
+import { fetchContacts } from './contactsActions';
+import contactStore from '../reducers/contactsReducer';
 
 export function authUser(email, password, nav) {
     return function(dispatch) {
@@ -12,11 +14,15 @@ export function authUser(email, password, nav) {
                 type: 'LOGIN',
                 uid: data.uid,
             });
-        }).then(error => {
+        }).then(() => {
             console.log("Route");
             nav.push({
                 name: 'contacts'
             });
-        });
+        }).then(() => {
+            let user = ref.getAuth();
+            let arr = contactStore.getState();
+            contactStore.dispatch(fetchContacts(user.uid, arr));
+        })
     }
 }
